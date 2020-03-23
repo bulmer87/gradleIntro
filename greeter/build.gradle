@@ -6,11 +6,14 @@ plugins{
   id 'java'
   id 'java-library'
   id 'application'
+  id 'groovy'
 }
 
 //here the project('group id:name:version')
 //is needed to specify a specific sub project and not and
 //external dependency
+//it would seem that if a library is deemed an api or will be used as an api
+//like the greeting library then api MUST preceed project.
 dependencies{
     api project(':greeting-library')
 }
