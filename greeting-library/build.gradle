@@ -1,0 +1,30 @@
+//a sub project (module) build file for greeting-library module
+
+//sub module specific plugins
+plugins {
+    id 'groovy'
+    id 'java-library'
+}
+
+//dependencies can be external to the code base aka 3 party libs
+//or they can be within projects as well aka your code.
+//it goes group:name(plugin name):version
+//api is used for compile and runtime and the library is leaked into the classpath
+//of the code that will be using it because it has to.
+//We will be using this groovy sub project in the java greeter project
+//The groovy object is exposed publicly and meant to be used by other classes
+//so this makes it an api.
+//Now implementation is something different this means compile and runtime
+//of this subproject ONLY. if it is used only a private function and
+//never meant to be used outside of this sub module then you can make it
+//implementation
+//This also breaks down into more categories of dependencies
+//compileOnly runtimeOnly testCompileOnly testRuntimeOnly
+//For a total of no test code = api, implementation, compileOnly, testRuntimeOnly
+//and for test = testImplementation testCompileOnly testRuntimeOnly 
+dependencies {
+    api 'org.codehaus.groovy:groovy:2.4.10'
+    testImplementation 'org.spockframework:spock-core:1.0-groovy-2.4', {
+        exclude module: 'groovy-all'
+    }
+}

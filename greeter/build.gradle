@@ -1,0 +1,18 @@
+//the subproject build for greeter java library
+//This uses the greeting-library sub-project and is dependent on it
+
+//plugins specific to this module or sub project
+plugins{
+  id 'java'
+  id 'java-library'
+  id 'application'
+}
+
+//here the project('group id:name:version')
+//is needed to specify a specific sub project and not and
+//external dependency
+dependencies{
+    api project(':greeting-library')
+}
+
+mainClassName = 'greeter.Greeter'
