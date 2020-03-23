@@ -1,0 +1,28 @@
+//subproject build for the docs module (sub project)
+//Looking at packaging multiple docs from one directory like here
+//to multiple modules (sub projects) it would be simpler
+//to create a docs-<projectname> specific directory as I have yet
+//to find a way to include multiple docs from one directory to
+//discrete submodules like the greeter and the greeting-library
+//from a single doc directory  
+
+//Even though this is declared at the root scope it is selectively applied here
+//this allows all plugins to be declared at the root scope and then applied
+//to modules (sub projects)
+plugins {
+    id 'org.asciidoctor.convert'
+}
+//Tells the plugin to look for a document called
+//greeter.adoc in the default source folder src/docs/asciidoc
+//This directory must be added there so gradle can use it
+//This is like creating an asciidoctor task in this build script
+//and will only run asciidoctor task in this module or subproject
+//when ran from the root
+asciidoctor {
+    sources {
+        include 'greeter.adoc'
+    }
+}
+//Adds asciidoctor task into the build lifecycle so that if build is executed
+//for the top-level project, then documentation will be built as well.
+build.dependsOn 'asciidoctor'

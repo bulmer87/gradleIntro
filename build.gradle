@@ -9,10 +9,14 @@
 //This is the root project build script
 
 //Plugins must be at the top the only thing that can be above this is another plugins section
-//or a buildscript these are global plugins
+//or a buildscript -> these are global project plugins
 plugins {
     //apply the base plugin from gradle https://plugins.gradle.org/
     id 'base'
+    //code commenting task and lib. apply false adds the plugin to the overall project
+    //but not the root project. This could be commented out and just added into
+    //the docs build.gradle plugins as well and not here 
+    id 'org.asciidoctor.convert' version '1.5.6' apply false
 }
 
 //This applies repo(s) to all sub projects (modules) underneath the rootProject

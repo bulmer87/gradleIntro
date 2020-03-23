@@ -10,3 +10,4 @@
 rootProject.name = 'begginerTest'
 include 'greeting-library'
 include 'greeter'
+include 'docs'
