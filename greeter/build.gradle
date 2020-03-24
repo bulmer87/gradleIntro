@@ -16,6 +16,26 @@ plugins{
 //like the greeting library then api MUST preceed project.
 dependencies{
     api project(':greeting-library')
+    testCompileOnly 'org.spockframework:spock-core:1.0-groovy-2.4', {
+        exclude module: 'groovy-all'
+    }
 }
 
 mainClassName = 'greeter.Greeter'
+
+//update the dist tasks so that the build/distributions directory
+//tars and zips have the docs that are created in the docs dir.
+//I believe that this basically states that from docs project
+//in the asciidoctor task grab what is stated there in the includes
+//the maybeWillBeInc should NOT be included 
+distZip{
+  from project(':docs').asciidoctor,{
+    into "{project.name}-${version}"
+  }
+}
+
+distTar{
+  from project(':docs').asciidoctor,{
+    into "{project.name}-${version}"
+  }
+}

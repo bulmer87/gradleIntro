@@ -19,9 +19,8 @@ plugins {
 //never meant to be used outside of this sub module then you can make it
 //implementation
 //This also breaks down into more categories of dependencies
-//compileOnly runtimeOnly testCompileOnly testRuntimeOnly
-//For a total of no test code = api, implementation, compileOnly, testRuntimeOnly
-//and for test = testImplementation testCompileOnly testRuntimeOnly 
+//For non test code = api, implementation, compileOnly, runtimeOnly
+//and for test = testImplementation testCompileOnly testRuntimeOnly
 dependencies {
     api 'org.codehaus.groovy:groovy:2.4.10'
     testImplementation 'org.spockframework:spock-core:1.0-groovy-2.4', {
